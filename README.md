@@ -67,13 +67,13 @@ Once a model is loaded, it is cached to avoid the overhead of reloading it on su
 | MAX_CACHED_INSTANCES | 1 | The number of cached model instances |
 
 
-Security
+## Security
 
 In accordance with best practices, the Docker container is built using a 2-stage process, with only essential files copied to the final image to reduce the attack surface. The Docker process also runs as a non-root user.
 
 However, the service downloads model images on startup over the public Internet. These images could be compromised. The service should be updated to read model images from a controlled source.
 
-Reflection
+## Reflection
 
 I considered adding a streaming API to make it more responsive, but this would not have improved overall performance.
 
