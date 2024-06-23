@@ -17,7 +17,7 @@ RUN poetry config virtualenvs.create false \
 FROM python:3.11-slim
 
 # Create a non-root user
-RUN groupadd -r appuser && useradd -r -g appuser appuser
+RUN groupadd -r appuser && useradd -r -m -g appuser appuser
 
 WORKDIR /app
 

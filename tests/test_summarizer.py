@@ -14,15 +14,23 @@ def test_summarize_text():
             "standard Python type hints. The key features are: Fast, "
             "Fast to code, Fewer bugs, Intuitive, Easy, Short, Robust, "
             "Standards-based.",
-            "max_length": 150,
-            "min_length": 20,
+            "max_length": 30,
+            "min_length": 10,
         },
     )
 
     assert response.status_code == 200
-    assert "summary" in response.json()
-    assert "original_length" in response.json()
-    assert "summary_length" in response.json()
+
+    data = response.json()
+
+    assert "summary" in data
+    assert "original_length" in data
+    assert "summary_length" in data
+
+    count_words = len(data["summary"].split())
+
+    assert count_words <= 30
+    assert count_words >= 10
 
 
 def test_invalid_input_too_short():
